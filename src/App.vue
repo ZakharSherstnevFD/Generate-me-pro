@@ -19,6 +19,7 @@ export default {
       // строка поиска от эмита
       search:'',
 
+
       // массив seeders
        templates: [
          {
@@ -28,7 +29,7 @@ export default {
            offer: 'Goji Cream',
            categories: 'Красота',
            type: 'Landing',
-           uploadDate: 27,
+           uploadDate: new Date().toLocaleDateString(),
          },
          {
            id: 2,
@@ -37,7 +38,7 @@ export default {
            offer: 'Princess Mask',
            categories: 'Красота',
            type: 'PreLanding',
-           uploadDate: 27,
+           uploadDate: new Date().toLocaleDateString(),
          },
          {
            id: 3,
@@ -46,7 +47,7 @@ export default {
            offer: 'Psoridex',
            categories: 'Здоровье',
            type: 'Landing',
-           uploadDate: 27,
+           uploadDate: new Date().toLocaleDateString(),
          }
        ]
     };
@@ -66,7 +67,7 @@ export default {
           return item;
         }
       })
-    }
+    },
   },
 
 };

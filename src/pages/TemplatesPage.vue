@@ -6,24 +6,21 @@
         @search="search = $event"
       />
     </div>
-    <div v-for="template in filter" :key="template.id">
-      <div class="body__table">
-        <p>{{ template.id }}</p>
-        <p>{{ template.name }}</p>
-        <p>{{ template.region }}</p>
-        <p>{{ template.offer }}</p>
-        <p>{{ template.categories }}</p>
-        <p>{{ template.type }}</p>
-        <p>{{ template.date }}</p>
-        <p>{{template}}</p>
-      </div>
-    </div>
-
+    <tr v-for="template in filter" :key="template.id">
+      <td><p>{{ template.id }}</p></td>
+      <td><p>{{ template.name }}</p></td>
+      <td><p>{{ template.region }}</p></td>
+      <td><p>{{ template.offer }}</p></td>
+      <td><p>{{ template.categories }}</p></td>
+      <td><p>{{ template.type }}</p></td>
+      <td><p>{{ template.uploadDate }}</p></td>
+    </tr>
   </div>
 </template>
 
 <script>
 import FilterTemplates from '@/components/TheFilter.vue'
+
 export default {
   components: {
     FilterTemplates
@@ -45,3 +42,7 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+
+</style>

@@ -1,17 +1,18 @@
 <template>
   <div class="main">
     <Header/>
-    <router-view @search="search = $event"  :filter="filter"></router-view>
+    <table>
+      <router-view @search="search = $event" :filter="filter"></router-view>
+    </table>
   </div>
 </template>
 
 <script>
 import Header from '@/components/TheHeader.vue'
-import PageMain from '@/components/TheContentPages.vue'
 
 export default {
   components: {
-    Header, PageMain
+    Header
   },
   props: {
     filter: Array
@@ -35,6 +36,10 @@ export default {
 <style scoped>
 .main {
   background: #f9f9f9;
+  width: 100%;
+}
+table {
+  padding: 12px;
   width: 100%;
 }
 </style>
