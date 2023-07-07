@@ -1,7 +1,7 @@
 <template>
   <div class="main">
     <Header/>
-    <PageMain @search="search = $event"  :filter="filter"/>
+    <router-view @search="search = $event"  :filter="filter"></router-view>
   </div>
 </template>
 

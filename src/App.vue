@@ -60,16 +60,12 @@ export default {
       //   сбрасываем пробелы и шрифты
       search = search.trim().toLowerCase();
       // фильтр
-      array = array.filter((item) => {
+      console.log(array);
+      return array.filter((item) => {
         if(item.name.toLowerCase().indexOf(search) !== -1) {
           return item;
         }
-        // при ошибке вернем полный массив
-        else {
-          return array;
-        }
       })
-
     }
   },
 

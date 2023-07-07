@@ -6,9 +6,13 @@
     </div>
     <nav class="nav">
       <ul>
-        <li><p>Dashboard</p> <span>&#9776;</span></li>
-        <li><p>Templates</p><span>&#9745;</span></li>
-        <li><p>Image Stock</p><span>&#10066;</span></li>
+        <div v-for="link in links" :key="link.title" class="nav__link">
+          <router-link :to="link.url">
+            <li>
+              <p>{{ link.title }}</p> <span>{{ link.icon }};</span>
+            </li>
+          </router-link>
+        </div>
       </ul>
     </nav>
   </div>
@@ -16,6 +20,27 @@
 
 <script>
 export default {
+  data() {
+    return {
+      links: [
+        {
+          url: '/dashboard',
+          title: 'Dashboard',
+          icon: '&#9776;',
+        },
+        {
+          url: '/templates',
+          title: 'Templates',
+          icon: '&#9745;',
+        },
+        {
+          url: '/imageStock',
+          title: 'Image Stock',
+          icon: '&#10066;',
+        },
+      ],
+    }
+  },
   methods: {
     closeNav(e) {
       let navBar = document.querySelector('.navbar');
@@ -31,6 +56,12 @@ export default {
   background: #161616;
   min-height: 100vh;
 }
+.router-link-exact-active li {
+  background: #000;
+  border-left: 3px solid #ff0000;
+  color: #fff;
+}
+
 .logo {
   display: flex;
   justify-content: space-between;
@@ -40,10 +71,12 @@ export default {
   cursor: pointer;
   padding: 20px 15px;
 }
+
 .logo p {
   color: #fff;
   font-size: 40px;
 }
+
 .nav ul li {
   color: #999;
   display: flex;
@@ -52,15 +85,18 @@ export default {
   padding: 20px;
   cursor: pointer;
 }
+
 .nav ul li:hover {
   background: #000;
   border-left: 3px solid #ff0000;
   color: #fff;
 }
+
 ._active {
   margin-left: -200px;
 
 }
+
 .navbar {
   transition: all .4s ease 0s;
 }
