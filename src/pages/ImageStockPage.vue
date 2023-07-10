@@ -1,5 +1,6 @@
 <template>
   <div class="content-imageStock">
+
     <div class="images__content-imageStock">
       <img v-for="img in images" :key="img.id" :src="img.url">
     </div>
@@ -9,6 +10,7 @@
 </script>
 
 <script>
+
 export default {
   data() {
     return {
@@ -16,18 +18,23 @@ export default {
         {
           id: '1',
           url: require('../assets/img/1.jpg'),
-          alt: 'girl',
-
+          Gender: 'Girl',
+          Age: '<25',
+          Country: 'Asia',
         },
         {
           id: '2',
           url: require('../assets/img/2.jpg'),
-          alt: 'girl'
+          Gender: 'Girl',
+          Age: '<25',
+          Country: 'Asia',
         },
         {
           id: '3',
           url: require('../assets/img/3.png'),
-          alt: 'ice'
+          Gender: 'Boy',
+          Age: '26-45',
+          Country: 'Europa',
         },
       ]
     }

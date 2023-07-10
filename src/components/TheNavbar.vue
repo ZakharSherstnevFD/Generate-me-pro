@@ -22,31 +22,15 @@
 export default {
   data() {
     return {
-      links: [
-        {
-          url: '/dashboard',
-          title: 'Dashboard',
-          icon: '&#9776;',
-        },
-        {
-          url: '/templates',
-          title: 'Templates',
-          icon: '&#9745;',
-        },
-        {
-          url: '/imageStock',
-          title: 'Image Stock',
-          icon: '&#10066;',
-        },
-      ],
+      links: this.$store.getters.getLinks,
     }
   },
   methods: {
-    closeNav(e) {
+    closeNav() {
       let navBar = document.querySelector('.navbar');
       navBar.classList.toggle('_active');
     }
-  }
+  },
 }
 </script>
 

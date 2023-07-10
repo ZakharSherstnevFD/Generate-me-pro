@@ -1,9 +1,7 @@
 <template>
   <div class="main">
     <Header/>
-    <table>
-      <router-view @search="search = $event" :filter="filter"></router-view>
-    </table>
+      <router-view></router-view>
   </div>
 </template>
 
@@ -14,22 +12,8 @@ export default {
   components: {
     Header
   },
-  props: {
-    filter: Array
-  },
-  data() {
-    return {
-      search: '',
 
-    }
-  },
-
-  watch: {
-    search(val) {
-      this.$emit('search', val);
-    },
-
-  },
+  data() {return {}},
 
 }
 </script>
@@ -38,8 +22,5 @@ export default {
   background: #f9f9f9;
   width: 100%;
 }
-table {
-  padding: 12px;
-  width: 100%;
-}
+
 </style>

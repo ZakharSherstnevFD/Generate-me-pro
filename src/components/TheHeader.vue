@@ -1,8 +1,8 @@
 <template>
   <header class="header">
     <div class="name__page">
-      <p>Home</p>
-      <span>Home</span>
+      <p>{{ pageName }}</p>
+      <span>Home /</span>
     </div>
     <div class="profile">
       <p class="icon__notification">&#128276;</p>
@@ -14,8 +14,11 @@
 <script>
 
 export default {
-
-
+  data() {
+    return {
+      pageName: 'Home',
+    }
+  },
 }
 </script>
 

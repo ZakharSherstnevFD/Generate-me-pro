@@ -1,40 +1,20 @@
 <template>
   <div class="filter-search">
-
-    <tr>
-      <th>ID</th>
-      <th>Name</th>
-      <th>Region</th>
-      <th>Offer</th>
-      <th>Type</th>
-      <th>Upload Date</th>
-    </tr>
-    <tr>
-      <td><input type="text"></td>
-      <td><input type="text" v-model="search"></td>
-      <td><input type="text"></td>
-      <td><input type="text"></td>
-      <td>
-        <select name="" id="">
-          <option>All types...</option>
-          <option>Landing</option>
-          <option>PreLanding</option>
-        </select>
-      </td>
-      <td></td>
-    </tr>
-
+    <table>
+      <tr>
+        <td><input placeholder="Search by ID" type="text"></td>
+        <td><input placeholder="Search by Name" type="text" v-model="search"></td>
+        <td><input placeholder="Search by Offer" type="text"></td>
+      </tr>
+    </table>
   </div>
 </template>
 
 <script>
 export default {
-  props: {
-    value: String
-  },
   data() {
     return {
-      search: this.value
+      search: '',
     }
   },
   watch: {
@@ -46,7 +26,9 @@ export default {
 </script>
 
 <style scoped>
-
+.filter-search {
+  padding:12px;
+}
 
 input,
 select {
