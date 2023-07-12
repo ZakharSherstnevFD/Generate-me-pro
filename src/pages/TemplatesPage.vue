@@ -6,13 +6,13 @@
       />
     </div>
     <table>
-      <tr style="font-weight:bold;">
-        <td>ID</td>
-        <td>Name</td>
+      <tr class="template__name" style="font-weight:bold;">
+        <td @click="sort('id')">ID &#8595;</td>
+        <td @click="sort('name')">Name &#8595;</td>
         <td>Region</td>
         <td>Offer</td>
-        <td>Categories</td>
-        <td>Type</td>
+        <td @click="sort('categories')">Categories &#8595;</td>
+        <td @click="sort('type')">Type &#8595;</td>
         <td>Upload Date</td>
       </tr>
       <tr v-for="template in templateFilter" :key="template.id">
@@ -25,6 +25,14 @@
         <td><p>{{ template.uploadDate }}</p></td>
       </tr>
     </table>
+    <section>
+      <div class="_container">
+        <div class="button-list">
+          <div @click="prevPage" class="btn btnPrimary">&#8592;</div>
+          <div @click="nextPage" class="btn btnPrimary">&#8594;</div>
+        </div>
+      </div>
+    </section>
   </div>
 </template>
 
@@ -42,6 +50,14 @@ export default {
       search: '',
       // массив данных из стора templates.js
       templates: this.$store.getters.getTemplates,
+      // данные для сортировки
+      currentSort: "id",
+      currentSortDir: "asc",
+      // данные для пагинации
+      page: {
+        current: 1,
+        length: 17,
+      },
     }
 
   },
@@ -51,8 +67,25 @@ export default {
     templateFilter() {
       let array = this.templates;
       let search = this.search;
-      // если поиск пустуй отдаем полный массив
-      if (!search) return array;
+      // если поиск пустуй отдаем  массив с пагинацией
+      if (!search)  return this.templates
+      // сортировка
+        .sort((a, b) => {
+          let mod = 1;
+          if (this.currentSortDir === "desc") mod = -1;
+          if (a[this.currentSort] < b[this.currentSort]) return -1 * mod;
+          if (a[this.currentSort] > b[this.currentSort]) return 1 * mod;
+          return 0;
+        })
+        //пагинация
+        .filter((row, index) => {
+          let start = (this.page.current - 1) * this.page.length;
+          let end = this.page.current * this.page.length;
+          if (index >= start && index < end) return true;
+        });
+
+      //ФИЛЬТР ПОИСКОВОЙ СТРОКИ
+
       //   сбрасываем пробелы и шрифты
       search = search.trim().toLowerCase();
       // фильтр
@@ -63,6 +96,27 @@ export default {
           return item;
         }
       });
+    },
+  },
+  methods: {
+    //метод сортировки
+    sort(e) {
+      if (e === this.currentSort) {
+        this.currentSortDir = this.currentSortDir === "asc" ? "desc" : "asc";
+      }
+      this.currentSort = e;
+    },
+
+    //методы пагинации (кнопки)
+    prevPage() {
+      if (this.page.current > 1) {
+        this.page.current -= 1;
+      }
+    },
+    nextPage() {
+      if (this.page.current * this.page.length < this.templates.length) {
+        this.page.current += 1;
+      }
     },
   },
 
@@ -76,5 +130,17 @@ table {
 }
 td {
   padding-bottom: 15px;
+}
+.button-list {
+  display: flex;
+  justify-content: center;
+}
+.button-list .btn {
+  margin: 20px;
+  font-size: 30px;
+  cursor: pointer;
+}
+.template__name td {
+  cursor: pointer;
 }
 </style>
