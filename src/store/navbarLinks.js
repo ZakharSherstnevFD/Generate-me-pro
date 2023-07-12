@@ -1,5 +1,4 @@
-
-
+// панель навигации с именем, иконкой и маршрутом для роутера
 export default{
   state:{
     links: [
@@ -20,8 +19,6 @@ export default{
       },
     ],
   },
-  mutations:{},
-  actions:{},
   getters:{
     getLinks(state) {
       return state.links

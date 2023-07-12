@@ -38,13 +38,16 @@ export default {
 
   data() {
     return {
+      // данные поля ввода названия продукта из дочернего элемента
       search: '',
+      // массив данных из стора templates.js
       templates: this.$store.getters.getTemplates,
     }
 
   },
 
   computed: {
+    // поиск по названию продукта
     templateFilter() {
       let array = this.templates;
       let search = this.search;
@@ -56,6 +59,7 @@ export default {
 
       return array.filter((item) => {
         if (item.name.toLowerCase().indexOf(search) !== -1) {
+          // возвращаю отфильтрованный массив
           return item;
         }
       });

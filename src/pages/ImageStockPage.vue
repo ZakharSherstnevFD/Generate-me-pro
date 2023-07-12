@@ -2,7 +2,8 @@
   <div class="content-imageStock">
 
     <div class="images__content-imageStock">
-      <img v-for="img in images" :key="img.id" :src="img.url">
+      <img  v-for="(img, index) in images" :key="index"  :src="img.url">
+
     </div>
   </div>
 </template>
@@ -10,35 +11,24 @@
 </script>
 
 <script>
+import axios from "axios";
 
 export default {
   data() {
     return {
-      images: [
-        {
-          id: '1',
-          url: require('../assets/img/1.jpg'),
-          Gender: 'Girl',
-          Age: '<25',
-          Country: 'Asia',
-        },
-        {
-          id: '2',
-          url: require('../assets/img/2.jpg'),
-          Gender: 'Girl',
-          Age: '<25',
-          Country: 'Asia',
-        },
-        {
-          id: '3',
-          url: require('../assets/img/3.png'),
-          Gender: 'Boy',
-          Age: '26-45',
-          Country: 'Europa',
-        },
-      ]
+      images: this.$store.getters.getImages
     }
-  }
+  },
+  created() {
+    for (let i = 0; i < 30; i++) {
+      axios
+        .get('https://random.dog/woof.json')
+        .then(response => {
+          this.images.push(response.data)
+        })
+    }
+    }
+
 }
 </script>
 <style scoped>

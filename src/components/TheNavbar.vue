@@ -22,10 +22,12 @@
 export default {
   data() {
     return {
+      // получаю массив с данными для навигации из стора navbarLinks.js
       links: this.$store.getters.getLinks,
     }
   },
   methods: {
+    // по клику закрываю и открываю навбар
     closeNav() {
       let navBar = document.querySelector('.navbar');
       navBar.classList.toggle('_active');

@@ -1,3 +1,4 @@
+// заглушка (имитация данных с сервера, которые будем принимать в action)
 import seeders from '../seeders/seedersTemplates'
 
 export default{
