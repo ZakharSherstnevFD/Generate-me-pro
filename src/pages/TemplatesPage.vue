@@ -37,7 +37,7 @@
 </template>
 
 <script>
-import FilterTemplates from '@/components/TheFilter.vue'
+import FilterTemplates from '@/components/TheFilterTemplates.vue'
 
 export default {
   components: {
@@ -139,6 +139,10 @@ td {
   margin: 20px;
   font-size: 30px;
   cursor: pointer;
+  background: #ff0000;
+  padding: 5px 30px;
+  color: #fff;
+  border-radius: 50px;
 }
 .template__name td {
   cursor: pointer;

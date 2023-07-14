@@ -6,7 +6,7 @@
     </div>
     <div class="profile">
       <p class="icon__notification">&#128276;</p>
-      <img class="avatar" src="@/assets/img/avatar.jpeg">
+      <img @click="$emit('openModal')" class="avatar" src="@/assets/img/avatar.jpeg">
     </div>
   </header>
 </template>

@@ -1,19 +1,32 @@
 <template>
   <div class="main">
-    <Header/>
+    <Header @openModal="openModal = !openModal"/>
       <router-view></router-view>
+    <Modal @close="openModal = !openModal" v-if="openModal" :avatarData="avatarData"/>
   </div>
 </template>
 
 <script>
 import Header from '@/components/TheHeader.vue'
+import Modal from '@/UI/TheModal.vue'
 
 export default {
   components: {
-    Header
+    Header, Modal
   },
 
-  data() {return {}},
+  data() {return {
+    avatarData:
+      {
+        email:'email@api.com',
+        profile: 'Profile',
+        menuItem: 'Menu Item',
+        logout: 'Logout'
+      }
+    ,
+    openModal: false
+  }},
+
 
 }
 </script>

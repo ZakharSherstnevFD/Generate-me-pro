@@ -1,12 +1,21 @@
 <template>
   <div class="filter-search">
-    <table>
-      <tr>
-        <td><input placeholder="Search by ID" type="text"></td>
-        <td><input placeholder="Search by Name" type="text" v-model="search"></td>
-        <td><input placeholder="Search by Offer" type="text"></td>
-      </tr>
-    </table>
+
+    <label>Search by Country</label>
+    <select v-model="countrySearch">
+      <option selected="selected">Не выбран</option>
+      <option>Европа</option>
+      <option>Азия</option>
+      <option>Латинская Америка</option>
+      <option>Африка</option>
+    </select>
+    <label>Search by Gender</label>
+    <select v-model="genderSearch">
+      <option selected="selected">Не выбран</option>
+      <option>Женский</option>
+      <option>Мужской</option>
+    </select>
+
   </div>
 </template>
 
@@ -14,14 +23,15 @@
 export default {
   data() {
     return {
-      //текст поля ввода названия продукта
-      search: '',
+        countrySearch: '',
+        genderSearch: '',
     }
   },
   watch: {
     //слежу за изменеиниями в поле ввода названия продукта и отправляю эмит родителю
     search(val) {
-      this.$emit('search', val);
+      console.log(this.countrySearch)
+      this.$emit('countrySearch', val);
     }
   }
 }
@@ -29,7 +39,7 @@ export default {
 
 <style scoped>
 .filter-search {
-  padding:12px;
+  padding: 12px;
 }
 
 input,
